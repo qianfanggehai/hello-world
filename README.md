@@ -1,3 +1,45 @@
+执行Git命令时出现各种 SSL certificate problem 的解决办法
+https://blog.csdn.net/officercat/article/details/39989837
+Android Studio怎么从GitHub克隆下载代码
+https://blog.csdn.net/binjianliu/article/details/78052613
+Android studio build.gradle 配置
+前言
+最近众多同事需要用到android studio进行二进制apk的编译工作，苦于不能在线更新项目的依赖库。解决方案来了！！！！！
+
+配置内容
+配置位置
+根目录下的build.gradle
+
+配置方式
+buildscript {
+   repositories {
+       google()
+       mavenCentral() // maven 远程库
+       maven { url 'http://mirrors.tools.huawei.com/maven/' } //华为自己的镜像库
+       jcenter{
+           url "http://jcenter.bintray.com" //因为https代理老是失败，这里改为http的地址
+      }
+  }
+}
+allprojects {
+   repositories {
+       google()
+       mavenCentral() // maven 远程库
+       maven { url 'http://mirrors.tools.huawei.com/maven/' }
+       jcenter{
+           url "http://jcenter.bintray.com"
+      }
+  }
+}
+
+多维分类：未定义多维分类
+BaronZ88/MinimalistWeather
+https://github.com/BaronZ88/MinimalistWeather
+魅族天气API
+https://blog.csdn.net/qq_24810411/article/details/89175825
+
+####################################################################################################################################################
+####################################################################################################################################################
 # Welcome to GitHub
 
 Welcome to GitHub—where millions of developers work together on software. Ready to get started? Let’s learn how this all works by building and publishing your first GitHub Pages website!
