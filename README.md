@@ -1,8 +1,8 @@
-#执行Git命令时出现各种 SSL certificate problem 的解决办法
+# 执行Git命令时出现各种 SSL certificate problem 的解决办法
 https://blog.csdn.net/officercat/article/details/39989837
-#Android Studio怎么从GitHub克隆下载代码
+# Android Studio怎么从GitHub克隆下载代码
 https://blog.csdn.net/binjianliu/article/details/78052613
-#Android studio build.gradle 配置
+# Android studio build.gradle 配置
 前言
 最近众多同事需要用到android studio进行二进制apk的编译工作，苦于不能在线更新项目的依赖库。解决方案来了！！！！！
 
@@ -32,9 +32,9 @@ allprojects {
   }
 }
 
-#BaronZ88/MinimalistWeather
+# BaronZ88/MinimalistWeather
 https://github.com/BaronZ88/MinimalistWeather
-#魅族天气API
+# 魅族天气API
 https://blog.csdn.net/qq_24810411/article/details/89175825
 
 
