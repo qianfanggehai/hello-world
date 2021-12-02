@@ -1,3 +1,13 @@
+#CoCoin 是一个详尽的个人财务和记账解决方案，运行在一个干净漂亮的用户界面之上。
+如果你想了解如何正确管理大量的用户数据，并从这些数据中绘制漂亮的图表，制作一些很酷的自定义视图，那么这个开源仓库就是为你而设的。
+https://github.com/Nightonke/CoCoin
+# Timber 是一款设计精美、功能齐全的 Android 音乐播放器。如果你想要建立自己的音乐播放器或任何音乐相关的应用程序，那么这是你需要查看的项目。
+该项目规模相当大，正处于密集开发状态。对于初学者来说，掌握所有代码可能会有点困难，但对于任何中级或高级 Android 开发人员来说，这应该是非常有趣的。
+https://github.com/naman14/Timber
+# 这个应用的功能相当简单，就是列出所有流行电影的预告片和评论，但是这个项目真正有趣的地方是它的实现方式。
+这个应用展示了一些非常棒的开发项目，像 MVP、Bob 的 Clean Architecture、Dagger 2 实现的依赖注入，和 RxJava 。
+这个应用程序非常简单，但实现方式非常棒，绝对值得一看。
+https://github.com/esoxjem/MovieGuide
 # 执行Git命令时出现各种 SSL certificate problem 的解决办法
 https://blog.csdn.net/officercat/article/details/39989837
 # Android Studio怎么从GitHub克隆下载代码
