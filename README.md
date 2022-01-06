@@ -1,3 +1,87 @@
+2021年工作总结与2022年的计划
+工位流程概述
+问题反馈
+
+
+工作 总结
+
+
+工作总结：DBC、PT、CW、MC
+DBC：
+DBC是Download and Board Check的简称，DBC工位是SMT之后的第一个测试工位，主要完成单板的软件加载，单板条码写入，以及加载完成后对单板进行基本测试。包括：单板信息、加载前漏电流、系统加载、电池电压校准等。这些测试会涵盖大部分基本功能，可以拦截较多不良单板，便于提早发现问题（器件损坏或漏焊），以免整机测试发现问题后返工成本较高。
+DBC也是第一个与UFS强相关的工位，主要的相关行为就是烧片版本的加载。
+PT：
+PT是整机测试的重要工位之一，PT工位是Power Test简称，即功耗测试。关键测试项为：开机前漏电流、开机电流、充电电流、待机电流、特殊场景待机电流、关机漏电流等。待机电流为重中之重的故障拦截途径。
+DBC、PT是烧片软件版本测试项。
+CW、MC是定制版本软件测试项。
+
+
+DIAG指令、AT指令：
+通过串口通信软件向机器发送指令，分析返回值判断机器是否正常。
+可以通过cmd_list_table.c找AT指令相关代码和diag_fac.h找DIAG相关代码。
+4BC977EE0000000042D27E                    查看开机启动状态
+4BC980E4BC945EEE00000000300E7E  查询ddr、emmc、cpu信息 
+4BC96AEE000000002DA57E             	    读取器件型号
+AT^DEVBOOTSTATE?  		     查看机器是否正常启动 
+AT^BSN?			     查询BSN 
+AT^SN?			     查询SN 
+
+如果遇到指令返回值异常，
+需要先查询机器log（hilogs），找到问题报错内容，分析下一步问题方向。
+如果与软件无关，需要把问题转到相关岗位人员；否则需要排查指令出错的原因。
+
+
+学习关于python语言的知识，写出自动化脚本，提高工作效率。
+能够帮助产线解决问题。
+工作能力提高一点，了解其他岗位。
+
+
+问题反馈：产线
+发送给产线的问题解决方向邮件，没有问题解决情况的邮件。
+自身优劣势：
+不限制在自己的的岗位，学习其他岗位情况。
+
+
+
+WIFIonly熔丝校验问题案例
+1、经过熔丝烧入步骤，向机器发指令：4B C9 48 EE 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 fe cb 7e，结果：手机返回全0，
+正常情况是4b c9 48 ee 00 00 00 30 30 30 00 15 00 6F 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 2E 49 7E
+
+2、分析hiapplogcat
+hw_diag_server: Lib:oem_qmi_cmd:Build socket connection failed,error info:Connection refused 
+[Diag_sec]: [HwdiagQfuse,00919]HwdiagQfuse: qmi read result: 0, qfuseData[0]:0x0, qfuseData[1]:0x0
+
+0x0 表示执行的是LTE的函数，是缺少WiFiOnly判断导致连接失败。 
+3、添加判断函数
+if (IsWiFiOnlyProduct()) {
+            opResult = GetFuseStatusByQsee(rspPkt->rdata, QFUSE_REGISTER_COUNT);
+        } else {
+            opResult = GetFuseStatusByModem(rspPkt->rdata, QFUSE_REGISTER_COUNT);
+        }
+
+        DIAG_SEC_LOGE("%s: qfuse read result: %d, qfuseData[0]:0x%x, qfuseData[1]:0x%x \n",
+            __func__, ret, rspPkt->rdata[0], rspPkt->rdata[1]);
+
+GetFuseStatusByQsee函数为了判断出wifi产品，GetFuseStatusByModem函数为了判断出lte产品。
+4、向代码中加入IsWiFiOnlyProduct判断条件，熔丝返回值正常，成功。最后华为人员上库，问题解决。
+
+出现问题
+分析装备log
+确定解决方向
+解决问题
+下一个问题
+
+
+
+
+
+
+
+
+
+
+
+
 # CoCoin 是一个详尽的个人财务和记账解决方案，运行在一个干净漂亮的用户界面之上。
 如果你想了解如何正确管理大量的用户数据，并从这些数据中绘制漂亮的图表，制作一些很酷的自定义视图，那么这个开源仓库就是为你而设的。
 https://github.com/Nightonke/CoCoin
